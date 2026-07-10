@@ -1,5 +1,50 @@
 import os
 from typing import Dict, Any, List
+import streamlit as st
+import time
+
+st.set_page_config(page_title="AI Application Assistant", layout="wide")
+
+# SIDEBAR (Identical for both)
+with st.sidebar:
+    st.header("📝 Inputs")
+    resume_input = st.text_area("1. Paste Resume:", height=150)
+    job_desc_input = st.text_area("2. Target Job Description:", height=150)
+
+st.title("🚀 AI Job Application Assistant")
+st.markdown("### Tabbed Workspace Layout")
+
+# Create the Tabs
+tab1, tab2, tab3 = st.tabs(["Control Panel", "Cover Letter Draft", "Agent Diagnostics"])
+
+with tab1:
+    st.subheader("Execution Engine")
+    st.write("Ensure your sidebar inputs are filled, then initialize the agents.")
+    if st.button("Generate Document", type="primary"):
+        with st.spinner("Agents are synthesizing data..."):
+            time.sleep(2)
+        st.success("Generation complete! Check the 'Cover Letter Draft' tab.")
+
+with tab2:
+    st.subheader("Your Tailored Document")
+    st.write("You can copy this text directly for your application.")
+    st.info(
+        "**Dear Hiring Manager,**\n\n"
+        "I am writing to apply for the position. My background aligns perfectly..."
+    )
+
+with tab3:
+    st.subheader("Under the Hood")
+    st.write("Review how the agents evaluated your profile.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**Resume Analyzer Output**")
+        st.json({"extracted_skills": ["Python", "SQL"], "gaps": ["None"]})
+    with col2:
+        st.markdown("**Critic Agent Output**")
+        st.json({"status": "Approved", "loops_taken": 1})
+##############################################################################################################
 
 # 1. Base Class Wrapper simulating Agent Roles
 class ResumeAnalyzer:
