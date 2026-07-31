@@ -100,6 +100,15 @@ Multi-agent systems often suffer from compounding errors and infinite looping. T
 * **API Failure & Rate Limit Resiliency:** The Job Matcher relies on external web scraping and APIs, which are subject to failure or strict rate caps. The system uses Python `try-except` blocks wrapping all API requests. If an API request fails, the system catches the exception, logs it, and gracefully falls back to a locally cached mock database of generic listings, prompting the user via the interface to copy-paste their desired target job description manually so the pipeline remains uninterrupted.
 
 ---
+📂 Repository Structure
+Plaintext
+├── app.py                      # Main Streamlit UI & Multi-Agent Orchestrator
+├── requirements.txt            # Python dependencies
+├── README.md                   # Installation & operational documentation
+├── Architecture_Diagram.png    # High-resolution agent workflow diagram
+└── Evaluation_Data.json        # Pilot benchmark results & test trace history
+
+---
 
 ## Setup & Run
 
